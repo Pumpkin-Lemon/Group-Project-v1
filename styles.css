@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+hr {
+    height: 4px;
+    /* ไล่สีจากเขียวน้ำทะเลไปฟ้าอ่อน */
+    background: linear-gradient(to right, var(--brand-primary), var(--brand-success));
+    margin: 40px auto;
+    /* เพิ่มระยะห่างด้านบนและล่าง */
+    max-width: 85%;
+    /* กำหนดความกว้างให้ดูดี */
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
 /* ==================================== */
 /* 0. COLOR VARIABLES (NEW) */
 /* ==================================== */
@@ -23,14 +35,21 @@
     --color-white: #ffffff;
     --color-gold: #fff764;
     /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Feature Cards */
-    --pastel-yellow: #fff9e3; /* เหลืองอ่อน (Light Yellow) */
-    --pastel-pink: #ffe4f4; /* ชมพูอ่อน (Light Pink) */
-    --pastel-orange: #fee5d3; /* ส้มอ่อน (Light Orange) */
+    --pastel-yellow: #fff9e3;
+    /* เหลืองอ่อน (Light Yellow) */
+    --pastel-pink: #ffe4f4;
+    /* ชมพูอ่อน (Light Pink) */
+    --pastel-orange: #fee5d3;
+    /* ส้มอ่อน (Light Orange) */
     /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Team Member Cards */
-    --team-pastel-blue: #d2e3fc; /* ฟ้าอ่อน */
-    --team-pastel-green: #d5e8df; /* เขียวอ่อน */
-    --team-pastel-lavender: #edd8fe; /* ม่วงลาเวนเดอร์ */
-    --team-pastel-peach: #ffb5a6; /* พีช/ส้มอ่อน */
+    --team-pastel-blue: #d2e3fc;
+    /* ฟ้าอ่อน */
+    --team-pastel-green: #d5e8df;
+    /* เขียวอ่อน */
+    --team-pastel-lavender: #edd8fe;
+    /* ม่วงลาเวนเดอร์ */
+    --team-pastel-peach: #ffb5a6;
+    /* พีช/ส้มอ่อน */
 }
 
 
@@ -48,7 +67,11 @@
     font-style: italic;
     color: #555;
     margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px;
+    width: 50%;
+    background-color: var(--color-light);
 }
 
 html {
@@ -108,6 +131,12 @@ body {
     min-height: calc(80vh - 60px);
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวตั้ง */
+    justify-content: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวนอน */
 
     &::before {
         content: '';
@@ -163,13 +192,19 @@ body {
 
 /* Feature Card Background & Hover Effect (NEW) */
 #features {
-background-color: var(--color-light) !important;
+    background-color: var(--color-light) !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวตั้ง */
+    justify-content: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวนอน */
 }
 
 /* คืนค่าพื้นหลังเดิมให้เป็นสีขาว เพื่อให้สีที่เราจะกำหนดแยกโดดเด่น */
 #features .p-4.bg-white {
-background-color: var(--color-white) !important; 
-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: var(--color-white) !important;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* ==================================== */
@@ -178,20 +213,23 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 /* บล็อกที่ 1: สีเหลืองอ่อน */
 #features .col-lg-4:nth-child(1) .p-4.bg-white {
-    background-color: var(--pastel-yellow) !important; 
-    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+    background-color: var(--pastel-yellow) !important;
+    color: var(--color-dark) !important;
+    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
 
 /* บล็อกที่ 2: สีชมพูอ่อน */
 #features .col-lg-4:nth-child(2) .p-4.bg-white {
     background-color: var(--pastel-pink) !important;
-    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+    color: var(--color-dark) !important;
+    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
 
 /* บล็อกที่ 3: สีส้มอ่อน */
 #features .col-lg-4:nth-child(3) .p-4.bg-white {
     background-color: var(--pastel-orange) !important;
-    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+    color: var(--color-dark) !important;
+    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
 
 /* ❗ สำคัญ: ทำให้ไอคอนเป็นสีเข้มเพื่อให้เห็นชัดบนพื้นหลังสีอ่อน */
@@ -203,8 +241,22 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 /* ปรับสีตอน Hover: ให้สีสว่างขึ้นเล็กน้อย */
 #features .p-4.bg-white:hover {
-transform: translateY(-5px); 
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔥 FIX: Pricing Section - เต็มหน้าจอและอยู่ตรงกลาง 🔥 */
+#pricing {
+    min-height: 100vh;
+    /* ความสูงอย่างน้อยเต็มหน้าจอ */
+    display: flex;
+    align-items: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางแนวตั้ง */
+    justify-content: center;
+    /* จัดเนื้อหาให้อยู่กึ่งกลางแนวนอน */
+    padding: 4rem 0;
+    /* เพิ่ม Padding เผื่อไว้ */
+    background-color: var(--color-light) !important;
 }
 
 /* Pricing Card Styling (คงเดิม) */
@@ -335,8 +387,8 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
 /* 5. FOOTER & CTA */
 .btn-primary {
-background-color: var(--brand-primary) !important;
-border-color: var(--brand-primary) !important;
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
     /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
@@ -345,14 +397,15 @@ border-color: var(--brand-primary) !important;
 .btn-primary:hover {
     background-color: var(--brand-primary) !important;
     border-color: var(--brand-primary) !important;
-    color: var(--color-dark) !important; /* เปลี่ยนเป็นสีเข้ม */
+    color: var(--color-dark) !important;
+    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-info {
-/* สำหรับปุ่ม CTA หลักใน Hero Section */
-background-color: var(--brand-info) !important;
-border-color: var(--brand-info) !important;
+    /* สำหรับปุ่ม CTA หลักใน Hero Section */
+    background-color: var(--brand-info) !important;
+    border-color: var(--brand-info) !important;
     /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
@@ -361,14 +414,15 @@ border-color: var(--brand-info) !important;
 .btn-info:hover {
     background-color: var(--brand-info) !important;
     border-color: var(--brand-info) !important;
-    color: var(--color-white) !important; /* เปลี่ยนเป็นสีเข้ม */
+    color: var(--color-white) !important;
+    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-success {
-/* สำหรับปุ่ม ปุ่มซื้อทั่วไป */
-background-color: var(--brand-info) !important;
-border-color: var(--brand-info) !important;
+    /* สำหรับปุ่ม ปุ่มซื้อทั่วไป */
+    background-color: var(--brand-info) !important;
+    border-color: var(--brand-info) !important;
     /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
@@ -377,22 +431,23 @@ border-color: var(--brand-info) !important;
 .btn-success:hover {
     background-color: var(--color-gold) !important;
     border-color: var(--color-gold) !important;
-    color: var(--color-dark) !important; /* เปลี่ยนเป็นสีเข้ม */
+    color: var(--color-dark) !important;
+    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-outline-light {
-border-color: var(--color-white) !important;
-color: var(--color-white) !important;
+    border-color: var(--color-white) !important;
+    color: var(--color-white) !important;
 }
 
 .btn-outline-light:hover {
-background-color: var(--color-white) !important;
-color: var(--color-dark) !important;
+    background-color: var(--color-white) !important;
+    color: var(--color-dark) !important;
 }
 
 .bg-dark {
-background-color: var(--color-dark) !important;
+    background-color: var(--color-dark) !important;
 }
 
 /* ==================================== */
