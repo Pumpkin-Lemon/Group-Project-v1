@@ -1,0 +1,310 @@
+/* styles.css */
+* {
+    /* ทำให้การวัดขนาดของทุกองค์ประกอบรวม padding และ border ด้วย (มาตรฐานเว็บสมัยใหม่) */
+    box-sizing: border-box;
+}
+
+/* ==================================== */
+/* 0. COLOR VARIABLES (NEW) */
+/* ==================================== */
+
+/* Primary: น้ำเงินเข้ม/น้ำเงิน (สำหรับปุ่ม, เส้นใต้ Navbar, ขอบการ์ด) */
+:root {
+    --brand-primary: #007bff;
+    /* สีน้ำเงินเข้ม */
+    --brand-success: #28a745;
+    /* สีเขียวสำหรับ Standard Package */
+    --brand-info: #17a2b8;
+    /* สีฟ้าอ่อนสำหรับ Hero Text */
+    --color-dark: #1f2833;
+    /* สีดำ/น้ำเงินเข้มสำหรับพื้นหลัง Hero */
+    --color-light: #f8f9fa;
+    /* สีพื้นหลังส่วน Features */
+    --color-white: #ffffff;
+    --social-facebook: #60A3FF;
+    /* สีฟ้า Facebook (สว่างขึ้น) */
+    --social-twitter: #79D3FF;
+    /* สีฟ้า Twitter (สว่างขึ้น) */
+    --social-linkedin: #5FA8FF;
+    /* สีฟ้า LinkedIn (สว่างขึ้น) */
+    --social-line: #33DA33;
+    /* สีเขียว Line (สว่างขึ้น) */
+    --social-instagram: #DE40AC;
+    /* สีชมพู/ม่วง Instagram */
+}
+
+/* ** NEW: Footer Icon Styles ** */
+/* ในส่วน FOOTER & CTA & BACK TO TOP BUTTON */
+
+/* สไตล์ทั่วไปสำหรับ Link ใน Footer */
+.footer-social a {
+    /* ทำให้ไอคอนมีการเปลี่ยนสีและเงาแบบนุ่มนวล */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* NEW: เพิ่มเอฟเฟกต์เรืองแสงเล็กน้อยเมื่อ Hover เพื่อให้ไอคอน "เด้ง" ขึ้นมา */
+.footer-social a:hover {
+    /* เพิ่มเงาขาว (Text Shadow) เพื่อจำลองการเรืองแสง */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+/* <--- *** เพิ่มวงเล็บปีกกาปิดตรงนี้แล้ว *** */
+
+/* คลาสสีเฉพาะแบรนด์ */
+.footer-social a.facebook-icon {
+    color: var(--social-facebook) !important;
+}
+
+.footer-social a.line-icon {
+    color: var(--social-line) !important;
+}
+
+.footer-social a.twitter-icon {
+    color: var(--social-twitter) !important;
+}
+
+.footer-social a.linkedin-icon {
+    color: var(--social-linkedin) !important;
+}
+
+.footer-social a.instagram-icon {
+    color: var(--social-instagram) !important;
+}
+
+html {
+    /* NEW: กำหนดความสูง 100% ของ Viewport */
+    height: 100%;
+    /* ทำให้การเลื่อน (Scroll) ทั้งหน้าเว็บเป็นแบบนุ่มนวลเมื่อมีการลิงก์ด้วย Hash (#) */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* กำหนดให้ไม่มี Margin และ Padding เหลืออยู่ */
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* ** กุญแจสำคัญ: ทำให้ Body ขยายเต็มความสูงของ HTML ** */
+    min-height: 100%;
+
+    padding-top: 60px;
+    background-color: var(--color-light);
+    /* แถบขาวที่คุณเห็นคือสีนี้ */
+}
+
+.custom-navbar {
+    background-color: var(--color-white) !important;
+}
+
+.custom-navbar .navbar-brand .bi {
+    color: var(--brand-primary);
+    /* สีไอคอนโลโก้ */
+}
+
+.custom-navbar .nav-link {
+    color: #333 !important;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding: 0.5rem 0.8rem;
+    margin: 0 0.5rem;
+    border-bottom: 3px solid transparent;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+    /* ใช้สี Primary สำหรับเส้นใต้เมื่อ Hover/Active */
+    border-bottom: 3px solid var(--brand-primary);
+    color: var(--brand-primary) !important;
+}
+
+/* ==================================== */
+/* 3. SECTION & ELEMENT STYLING */
+/* ==================================== */
+
+/* Hero Section (พื้นหลังมืด) */
+.hero-section {
+    /* ใช้สี Dark และ Info */
+    background: linear-gradient(135deg, var(--color-dark) 0%, #0b0c0e 100%);
+    color: var(--color-white);
+    padding: 8rem 0;
+    min-height: calc(80vh - 60px);
+}
+
+.hero-section .text-info {
+    color: var(--brand-info) !important;
+}
+
+
+/* Feature Icons (สีดำเข้ม) */
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--color-dark);
+}
+
+/* Feature Card Background & Hover Effect (NEW) */
+#features {
+    background-color: var(--color-light) !important;
+}
+
+#features .p-4.bg-white {
+    background-color: var(--color-white) !important;
+    /* NEW: เพิ่ม Transition เพื่อให้การยกตัวนุ่มนวล */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#features .p-4.bg-white:hover {
+    /* NEW: Effect ยกตัวขึ้น 5px */
+    transform: translateY(-5px);
+    /* NEW: เงาเพิ่มความลึก */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Pricing Card Styling (คงเดิม) */
+.pricing-card {
+    /* มี Transition อยู่แล้ว */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* การ์ด Basic (Primary) */
+.pricing-card.border-primary {
+    border-color: var(--brand-primary) !important;
+}
+
+.pricing-card .bg-primary {
+    background-color: var(--brand-primary) !important;
+}
+
+.pricing-card .btn-outline-primary {
+    color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+}
+
+.pricing-card .btn-outline-primary:hover {
+    background-color: var(--brand-primary) !important;
+    color: var(--color-white) !important;
+}
+
+/* การ์ด Standard (Success) */
+.pricing-card.border-success {
+    border-color: var(--brand-success) !important;
+}
+
+.pricing-card .bg-success {
+    background-color: var(--brand-success) !important;
+}
+
+.pricing-card .btn-success {
+    background-color: var(--brand-success) !important;
+    border-color: var(--brand-success) !important;
+}
+
+/* การ์ด Enterprise (Info/Primary) - ใช้ Primary Theme เหมือน Basic เพื่อให้ดูเป็นชุดเดียวกัน */
+.pricing-card.border-info {
+    border-color: var(--brand-primary) !important;
+}
+
+.pricing-card .bg-info {
+    background-color: var(--brand-primary) !important;
+    color: var(--color-white) !important;
+}
+
+.pricing-card .btn-outline-info {
+    color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+}
+
+.pricing-card .btn-outline-info:hover {
+    background-color: var(--brand-primary) !important;
+    color: var(--color-white) !important;
+}
+
+/* Check Icons */
+.list-unstyled .text-success {
+    color: var(--brand-success) !important;
+}
+
+/* 4. TEAM MEMBER STYLING */
+.team-member-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.team-member-card:hover {
+    transform: scale(1.03);
+}
+
+/* ** NEW: แก้ไขรูปภาพให้เป็นสี่เหลี่ยมจัตุรัสและไม่บี้ ** */
+.team-member-card .team-member-img {
+    /* บังคับให้เป็นสี่เหลี่ยมจัตุรัส */
+    width: 100%;
+    height: 100%;
+    /* ปรับปรุง: กำหนดความสูงที่แน่นอนเพื่อล็อคสัดส่วน (เช่น 250px) */
+    /* ถ้าใช้ img-fluid ของ Bootstrap ให้กำหนด max-width: 100% ด้วย */
+    height: 250px;
+    /* หรือขนาดอื่นที่คุณต้องการ */
+
+    /* ** กุญแจสำคัญ: object-fit: cover ** */
+    /* ทำให้ภาพขยายจนเต็มพื้นที่ที่กำหนด โดยตัดส่วนที่เกินออกไปแทนการบีบภาพ */
+    object-fit: cover;
+}
+
+/* 5. FOOTER & CTA */
+.btn-primary {
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+}
+
+.btn-info {
+    /* สำหรับปุ่ม CTA หลักใน Hero Section */
+    background-color: var(--brand-info) !important;
+    border-color: var(--brand-info) !important;
+}
+
+.btn-outline-light {
+    border-color: var(--color-white) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--color-white) !important;
+    color: var(--color-dark) !important;
+}
+
+.bg-dark {
+    background-color: var(--color-dark) !important;
+}
+
+
+/* ==================================== */
+/* 6. BACK TO TOP BUTTON */
+/* ==================================== */
+#backToTopBtn {
+    /* ซ่อนปุ่มเริ่มต้น (ไม่มี JS จึงใช้แค่ CSS ไม่ได้) แต่เราจะให้มันแสดงอยู่เสมอ */
+    position: fixed;
+    /* ตำแหน่งคงที่ */
+    bottom: 20px;
+    /* ห่างจากขอบล่าง 20px */
+    right: 20px;
+    /* ห่างจากขอบขวา 20px */
+    z-index: 99;
+    /* ให้อยู่ด้านหน้าสุด */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 18px;
+    background-color: var(--brand-primary);
+    color: var(--color-white);
+    width: 50px;
+    height: 50px;
+    line-height: 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#backToTopBtn:hover {
+    background-color: #0056b3;
+}
