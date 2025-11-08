@@ -10,35 +10,38 @@
 
 /* Primary: น้ำเงินเข้ม/น้ำเงิน (สำหรับปุ่ม, เส้นใต้ Navbar, ขอบการ์ด) */
 :root {
-    --brand-primary: #00ac9a;
-    --brand-success: #0099ff;
-    --brand-premium: #DE40AC;
+    --brand-primary: #00c4b7;
+    --brand-success: #45d0ff;
+    --brand-premium: #ae57ff;
     /*ของ Premium*/
-    --brand-info: #00b7ff;
+    --brand-info: #00b9ad;
     /* สีฟ้าอ่อนสำหรับ Hero Text */
     --color-dark: #1f2833;
     /* สีดำ/น้ำเงินเข้มสำหรับพื้นหลัง Hero */
     --color-light: #f8f9fa;
     /* สีพื้นหลังส่วน Features */
     --color-white: #ffffff;
-    --social-facebook: #60A3FF;
-    /* สีฟ้า Facebook (สว่างขึ้น) */
-    --social-twitter: #79D3FF;
-    /* สีฟ้า Twitter (สว่างขึ้น) */
-    --social-linkedin: #5FA8FF;
-    /* สีฟ้า LinkedIn (สว่างขึ้น) */
-    --social-line: #33DA33;
-    /* สีเขียว Line (สว่างขึ้น) */
-    --social-instagram: #DE40AC;
-    /* สีชมพู/ม่วง Instagram */
+    --color-gold: #fff764;
+    /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Feature Cards */
+    --pastel-yellow: #fff9e3; /* เหลืองอ่อน (Light Yellow) */
+    --pastel-pink: #ffe4f4; /* ชมพูอ่อน (Light Pink) */
+    --pastel-orange: #fee5d3; /* ส้มอ่อน (Light Orange) */
+    /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Team Member Cards */
+    --team-pastel-blue: #d2e3fc; /* ฟ้าอ่อน */
+    --team-pastel-green: #d5e8df; /* เขียวอ่อน */
+    --team-pastel-lavender: #edd8fe; /* ม่วงลาเวนเดอร์ */
+    --team-pastel-peach: #ffb5a6; /* พีช/ส้มอ่อน */
 }
 
 
 /* เลือก Selector ที่ใช้สำหรับโลโก้โซเชียลมีเดีย */
-.social-media-icons img {                                                                                                                                                                           
-    width: 30px;  /* กำหนดความกว้างที่เหมาะสม */
-    height: 30px; /* กำหนดความสูงที่เหมาะสม */
-    margin: 0 5px; /* เพิ่มระยะห่างระหว่างโลโก้ */
+.social-media-icons img {
+    width: 30px;
+    /* กำหนดความกว้างที่เหมาะสม */
+    height: 30px;
+    /* กำหนดความสูงที่เหมาะสม */
+    margin: 0 5px;
+    /* เพิ่มระยะห่างระหว่างโลโก้ */
 }
 
 .bio {
@@ -100,14 +103,55 @@ body {
 /* Hero Section (พื้นหลังมืด) */
 .hero-section {
     /* ใช้สี Dark และ Info */
-    background: linear-gradient(135deg, var(--color-dark) 0%, #0b0c0e 100%);
     color: var(--color-white);
     padding: 8rem 0;
     min-height: calc(80vh - 60px);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* ใช้สีดำเข้ม (var(--color-dark)) ที่โปร่งใส 50% */
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+        /* ให้อยู่เหนือรูปภาพ (z-index: 1) แต่ใต้เนื้อหา (z-index: 10) */
+    }
 }
 
 .hero-section .text-info {
     color: var(--brand-info) !important;
+}
+
+/* ** NEW: สไตล์สำหรับรูปภาพพื้นหลังใน Hero Section ** */
+.hero-section .hero-background-image {
+    position: absolute;
+    /* ตรึงรูปภาพไว้ */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* ทำให้รูปภาพไม่บิดเบี้ยวและครอบคลุมพื้นที่ทั้งหมด */
+    object-fit: cover;
+    /* จัดกึ่งกลางรูปภาพ */
+    object-position: center;
+
+    /* จัดลำดับความลึก: ให้รูปภาพอยู่ข้างหลังเนื้อหา (และ Navbar) */
+    z-index: 1;
+
+}
+
+/* สไตล์สำหรับเนื้อหา Hero (ให้อยู่เหนือรูปภาพพื้นหลัง) */
+.hero-section .container {
+    position: relative;
+    /* สำคัญ: เพื่อให้เนื้อหาอยู่เหนือรูปภาพพื้นหลัง */
+    z-index: 10;
+    /* เนื้อหาอยู่ข้างหน้า */
 }
 
 
@@ -119,20 +163,48 @@ body {
 
 /* Feature Card Background & Hover Effect (NEW) */
 #features {
-    background-color: var(--color-light) !important;
+background-color: var(--color-light) !important;
 }
 
+/* คืนค่าพื้นหลังเดิมให้เป็นสีขาว เพื่อให้สีที่เราจะกำหนดแยกโดดเด่น */
 #features .p-4.bg-white {
-    background-color: var(--color-white) !important;
-    /* NEW: เพิ่ม Transition เพื่อให้การยกตัวนุ่มนวล */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+background-color: var(--color-white) !important; 
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* ==================================== */
+/* ✅ โค้ดที่แก้ไข: ใช้สีอ่อนใหม่ 3 บล็อก */
+/* ==================================== */
+
+/* บล็อกที่ 1: สีเหลืองอ่อน */
+#features .col-lg-4:nth-child(1) .p-4.bg-white {
+    background-color: var(--pastel-yellow) !important; 
+    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+}
+
+/* บล็อกที่ 2: สีชมพูอ่อน */
+#features .col-lg-4:nth-child(2) .p-4.bg-white {
+    background-color: var(--pastel-pink) !important;
+    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+}
+
+/* บล็อกที่ 3: สีส้มอ่อน */
+#features .col-lg-4:nth-child(3) .p-4.bg-white {
+    background-color: var(--pastel-orange) !important;
+    color: var(--color-dark) !important; /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
+}
+
+/* ❗ สำคัญ: ทำให้ไอคอนเป็นสีเข้มเพื่อให้เห็นชัดบนพื้นหลังสีอ่อน */
+#features .col-lg-4:nth-child(1) .feature-icon,
+#features .col-lg-4:nth-child(2) .feature-icon,
+#features .col-lg-4:nth-child(3) .feature-icon {
+    color: var(--color-dark) !important;
+}
+
+/* ปรับสีตอน Hover: ให้สีสว่างขึ้นเล็กน้อย */
 #features .p-4.bg-white:hover {
-    /* NEW: Effect ยกตัวขึ้น 5px */
-    transform: translateY(-5px);
-    /* NEW: เงาเพิ่มความลึก */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+transform: translateY(-5px); 
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Pricing Card Styling (คงเดิม) */
@@ -206,55 +278,122 @@ body {
 
 /* 4. TEAM MEMBER STYLING */
 .team-member-card {
-transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .team-member-card:hover {
-transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 /* ** แก้ไข: รูปภาพสมาชิกให้เป็นวงกลมสมบูรณ์และไม่บิดเบี้ยว ** */
 .team-member-card .team-member-img {
-/* 1. กำหนดขนาดตายตัวให้เป็นสี่เหลี่ยมจัตุรัส */
-width: 300px;
-height: 300px;
-/* 2. ทำให้ภาพไม่บิดเบี้ยว (ตัดส่วนที่เกินออกไป) */
-object-fit: cover;
-/* 3. ทำให้ภาพอยู่ตรงกลางของการ์ด */
-display: block;
-margin: 0 auto 1rem auto; /* เว้นระยะห่างด้านล่างจากชื่อ 1rem */
+    /* 1. กำหนดขนาดตายตัวให้เป็นสี่เหลี่ยมจัตุรัส */
+    width: 300px;
+    height: 300px;
+    /* 2. ทำให้ภาพไม่บิดเบี้ยว (ตัดส่วนที่เกินออกไป) */
+    object-fit: cover;
+    /* 3. ทำให้ภาพอยู่ตรงกลางของการ์ด */
+    display: block;
+    margin: 0 auto 1rem auto;
+    /* เว้นระยะห่างด้านล่างจากชื่อ 1rem */
 
-/* 4. กุญแจสำคัญ: ทำให้เป็นวงกลม */
-border-radius: 50%; /* ตัวเลือกเสริม: เพิ่มเงาหรือขอบ */
+    /* 4. กุญแจสำคัญ: ทำให้เป็นวงกลม */
+    border-radius: 50%;
+    /* ตัวเลือกเสริม: เพิ่มเงาหรือขอบ */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================================== */
+/* ✅ NEW: กำหนดสีพื้นหลังให้แต่ละบล็อกสมาชิก (5 บล็อก) */
+/* (ใช้ col-lg-4:nth-child(n) เพื่อกำหนดสีที่แตกต่างกัน) */
+/* ==================================== */
+
+.row.g-4 .col-lg-4:nth-child(1) .team-member-card {
+    background-color: var(--team-pastel-blue) !important;
+    border-color: var(--team-pastel-blue) !important;
+}
+
+.row.g-4 .col-lg-4:nth-child(2) .team-member-card {
+    background-color: var(--pastel-pink) !important;
+    border-color: var(--pastel-pink) !important;
+}
+
+.row.g-4 .col-lg-4:nth-child(3) .team-member-card {
+    background-color: var(--team-pastel-green) !important;
+    border-color: var(--team-pastel-green) !important;
+}
+
+.row.g-4 .col-lg-4:nth-child(4) .team-member-card {
+    background-color: var(--pastel-yellow) !important;
+    border-color: var(--pastel-yellow) !important;
+}
+
+.row.g-4 .col-lg-4:nth-child(5) .team-member-card {
+    background-color: var(--team-pastel-lavender) !important;
+    border-color: var(--team-pastel-lavender) !important;
 }
 
 /* 5. FOOTER & CTA */
 .btn-primary {
+background-color: var(--brand-primary) !important;
+border-color: var(--brand-primary) !important;
+    /* ✅ เพิ่ม: Transition */
+    transition: all 0.3s ease;
+}
+
+/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-primary (ปุ่มติดต่อเรา) */
+.btn-primary:hover {
     background-color: var(--brand-primary) !important;
     border-color: var(--brand-primary) !important;
+    color: var(--color-dark) !important; /* เปลี่ยนเป็นสีเข้ม */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-info {
-    /* สำหรับปุ่ม CTA หลักใน Hero Section */
+/* สำหรับปุ่ม CTA หลักใน Hero Section */
+background-color: var(--brand-info) !important;
+border-color: var(--brand-info) !important;
+    /* ✅ เพิ่ม: Transition */
+    transition: all 0.3s ease;
+}
+
+/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-info (ปุ่มทดลองใช้ฟรี) */
+.btn-info:hover {
     background-color: var(--brand-info) !important;
     border-color: var(--brand-info) !important;
+    color: var(--color-white) !important; /* เปลี่ยนเป็นสีเข้ม */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-success {
+/* สำหรับปุ่ม ปุ่มซื้อทั่วไป */
+background-color: var(--brand-info) !important;
+border-color: var(--brand-info) !important;
+    /* ✅ เพิ่ม: Transition */
+    transition: all 0.3s ease;
+}
+
+/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-info (ปุ่มซื้อทั่วไป) */
+.btn-success:hover {
+    background-color: var(--color-gold) !important;
+    border-color: var(--color-gold) !important;
+    color: var(--color-dark) !important; /* เปลี่ยนเป็นสีเข้ม */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-outline-light {
-    border-color: var(--color-white) !important;
-    color: var(--color-white) !important;
+border-color: var(--color-white) !important;
+color: var(--color-white) !important;
 }
 
 .btn-outline-light:hover {
-    background-color: var(--color-white) !important;
-    color: var(--color-dark) !important;
+background-color: var(--color-white) !important;
+color: var(--color-dark) !important;
 }
 
 .bg-dark {
-    background-color: var(--color-dark) !important;
+background-color: var(--color-dark) !important;
 }
-
 
 /* ==================================== */
 /* 6. BACK TO TOP BUTTON */
