@@ -10,11 +10,11 @@
 
 /* Primary: น้ำเงินเข้ม/น้ำเงิน (สำหรับปุ่ม, เส้นใต้ Navbar, ขอบการ์ด) */
 :root {
-    --brand-primary: #007bff;
-    /* สีน้ำเงินเข้ม */
-    --brand-success: #28a745;
-    /* สีเขียวสำหรับ Standard Package */
-    --brand-info: #17a2b8;
+    --brand-primary: #00ac9a;
+    --brand-success: #0099ff;
+    --brand-premium: #DE40AC;
+    /*ของ Premium*/
+    --brand-info: #00b7ff;
     /* สีฟ้าอ่อนสำหรับ Hero Text */
     --color-dark: #1f2833;
     /* สีดำ/น้ำเงินเข้มสำหรับพื้นหลัง Hero */
@@ -33,42 +33,19 @@
     /* สีชมพู/ม่วง Instagram */
 }
 
-/* ** NEW: Footer Icon Styles ** */
-/* ในส่วน FOOTER & CTA & BACK TO TOP BUTTON */
 
-/* สไตล์ทั่วไปสำหรับ Link ใน Footer */
-.footer-social a {
-    /* ทำให้ไอคอนมีการเปลี่ยนสีและเงาแบบนุ่มนวล */
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+/* เลือก Selector ที่ใช้สำหรับโลโก้โซเชียลมีเดีย */
+.social-media-icons img {                                                                                                                                                                           
+    width: 30px;  /* กำหนดความกว้างที่เหมาะสม */
+    height: 30px; /* กำหนดความสูงที่เหมาะสม */
+    margin: 0 5px; /* เพิ่มระยะห่างระหว่างโลโก้ */
 }
 
-/* NEW: เพิ่มเอฟเฟกต์เรืองแสงเล็กน้อยเมื่อ Hover เพื่อให้ไอคอน "เด้ง" ขึ้นมา */
-.footer-social a:hover {
-    /* เพิ่มเงาขาว (Text Shadow) เพื่อจำลองการเรืองแสง */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-}
-
-/* <--- *** เพิ่มวงเล็บปีกกาปิดตรงนี้แล้ว *** */
-
-/* คลาสสีเฉพาะแบรนด์ */
-.footer-social a.facebook-icon {
-    color: var(--social-facebook) !important;
-}
-
-.footer-social a.line-icon {
-    color: var(--social-line) !important;
-}
-
-.footer-social a.twitter-icon {
-    color: var(--social-twitter) !important;
-}
-
-.footer-social a.linkedin-icon {
-    color: var(--social-linkedin) !important;
-}
-
-.footer-social a.instagram-icon {
-    color: var(--social-instagram) !important;
+.bio {
+    font-style: italic;
+    color: #555;
+    margin-top: 15px;
+    padding: 10px;
 }
 
 html {
@@ -204,21 +181,21 @@ body {
 
 /* การ์ด Enterprise (Info/Primary) - ใช้ Primary Theme เหมือน Basic เพื่อให้ดูเป็นชุดเดียวกัน */
 .pricing-card.border-info {
-    border-color: var(--brand-primary) !important;
+    border-color: var(--brand-premium) !important;
 }
 
 .pricing-card .bg-info {
-    background-color: var(--brand-primary) !important;
+    background-color: var(--brand-premium) !important;
     color: var(--color-white) !important;
 }
 
 .pricing-card .btn-outline-info {
-    color: var(--brand-primary) !important;
-    border-color: var(--brand-primary) !important;
+    color: var(--brand-premium) !important;
+    border-color: var(--brand-premium) !important;
 }
 
 .pricing-card .btn-outline-info:hover {
-    background-color: var(--brand-primary) !important;
+    background-color: var(--brand-premium) !important;
     color: var(--color-white) !important;
 }
 
@@ -229,26 +206,27 @@ body {
 
 /* 4. TEAM MEMBER STYLING */
 .team-member-card {
-    transition: transform 0.2s ease-in-out;
+transition: transform 0.2s ease-in-out;
 }
 
 .team-member-card:hover {
-    transform: scale(1.03);
+transform: scale(1.03);
 }
 
-/* ** NEW: แก้ไขรูปภาพให้เป็นสี่เหลี่ยมจัตุรัสและไม่บี้ ** */
+/* ** แก้ไข: รูปภาพสมาชิกให้เป็นวงกลมสมบูรณ์และไม่บิดเบี้ยว ** */
 .team-member-card .team-member-img {
-    /* บังคับให้เป็นสี่เหลี่ยมจัตุรัส */
-    width: 100%;
-    height: 100%;
-    /* ปรับปรุง: กำหนดความสูงที่แน่นอนเพื่อล็อคสัดส่วน (เช่น 250px) */
-    /* ถ้าใช้ img-fluid ของ Bootstrap ให้กำหนด max-width: 100% ด้วย */
-    height: 250px;
-    /* หรือขนาดอื่นที่คุณต้องการ */
+/* 1. กำหนดขนาดตายตัวให้เป็นสี่เหลี่ยมจัตุรัส */
+width: 300px;
+height: 300px;
+/* 2. ทำให้ภาพไม่บิดเบี้ยว (ตัดส่วนที่เกินออกไป) */
+object-fit: cover;
+/* 3. ทำให้ภาพอยู่ตรงกลางของการ์ด */
+display: block;
+margin: 0 auto 1rem auto; /* เว้นระยะห่างด้านล่างจากชื่อ 1rem */
 
-    /* ** กุญแจสำคัญ: object-fit: cover ** */
-    /* ทำให้ภาพขยายจนเต็มพื้นที่ที่กำหนด โดยตัดส่วนที่เกินออกไปแทนการบีบภาพ */
-    object-fit: cover;
+/* 4. กุญแจสำคัญ: ทำให้เป็นวงกลม */
+border-radius: 50%; /* ตัวเลือกเสริม: เพิ่มเงาหรือขอบ */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* 5. FOOTER & CTA */
