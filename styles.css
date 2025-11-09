@@ -4,96 +4,52 @@
     box-sizing: border-box;
 }
 
-hr {
-    height: 4px;
-    /* ไล่สีจากเขียวน้ำทะเลไปฟ้าอ่อน */
-    background: linear-gradient(to right, var(--brand-primary), var(--brand-success));
-    margin: 40px auto;
-    /* เพิ่มระยะห่างด้านบนและล่าง */
-    max-width: 85%;
-    /* กำหนดความกว้างให้ดูดี */
-    border-radius: 2px;
-    opacity: 0.7;
-}
-
 /* ==================================== */
 /* 0. COLOR VARIABLES (NEW) */
 /* ==================================== */
 
-/* Primary: น้ำเงินเข้ม/น้ำเงิน (สำหรับปุ่ม, เส้นใต้ Navbar, ขอบการ์ด) */
 :root {
     --brand-primary: #00c4b7;
     --brand-success: #45d0ff;
     --brand-premium: #ae57ff;
-    /*ของ Premium*/
     --brand-info: #00b9ad;
-    /* สีฟ้าอ่อนสำหรับ Hero Text */
     --color-dark: #1f2833;
-    /* สีดำ/น้ำเงินเข้มสำหรับพื้นหลัง Hero */
     --color-light: #f8f9fa;
-    /* สีพื้นหลังส่วน Features */
     --color-white: #ffffff;
     --color-gold: #fff764;
-    /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Feature Cards */
     --pastel-yellow: #fff9e3;
-    /* เหลืองอ่อน (Light Yellow) */
     --pastel-pink: #ffe4f4;
-    /* ชมพูอ่อน (Light Pink) */
     --pastel-orange: #fee5d3;
-    /* ส้มอ่อน (Light Orange) */
-    /* ✅ เพิ่ม: ตัวแปรสีอ่อนสำหรับ Team Member Cards */
     --team-pastel-blue: #d2e3fc;
-    /* ฟ้าอ่อน */
     --team-pastel-green: #d5e8df;
-    /* เขียวอ่อน */
     --team-pastel-lavender: #edd8fe;
-    /* ม่วงลาเวนเดอร์ */
     --team-pastel-peach: #ffb5a6;
-    /* พีช/ส้มอ่อน */
 }
 
+/* ==================================== */
+/* 1. GLOBAL HTML/BODY FIXES */
+/* ==================================== */
 
-/* เลือก Selector ที่ใช้สำหรับโลโก้โซเชียลมีเดีย */
-.social-media-icons img {
-    width: 30px;
-    /* กำหนดความกว้างที่เหมาะสม */
-    height: 30px;
-    /* กำหนดความสูงที่เหมาะสม */
-    margin: 0 5px;
-    /* เพิ่มระยะห่างระหว่างโลโก้ */
-}
-
-.bio {
-    font-style: italic;
-    color: #555;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    width: 50%;
-    background-color: var(--color-light);
-}
-
-html {
-    /* NEW: กำหนดความสูง 100% ของ Viewport */
-    height: 100%;
-    /* ทำให้การเลื่อน (Scroll) ทั้งหน้าเว็บเป็นแบบนุ่มนวลเมื่อมีการลิงก์ด้วย Hash (#) */
+html, body {
+    /* FIX: ทำให้ HTML และ Body สูง 100% ของ Viewport */
+    height: 100%; 
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
 }
 
 body {
-    /* กำหนดให้ไม่มี Margin และ Padding เหลืออยู่ */
     font-family: 'Prompt', sans-serif;
     margin: 0;
     padding: 0;
-
-    /* ** กุญแจสำคัญ: ทำให้ Body ขยายเต็มความสูงของ HTML ** */
     min-height: 100%;
-
-    padding-top: 60px;
-    background-color: var(--color-light);
-    /* แถบขาวที่คุณเห็นคือสีนี้ */
+    padding-top: 60px; /* ชดเชยความสูง Navbar */
+    background-color: var(--color-white); 
 }
+
+/* ==================================== */
+/* 2. NAVIGATION BAR STYLING */
+/* ==================================== */
 
 .custom-navbar {
     background-color: var(--color-white) !important;
@@ -101,7 +57,6 @@ body {
 
 .custom-navbar .navbar-brand .bi {
     color: var(--brand-primary);
-    /* สีไอคอนโลโก้ */
 }
 
 .custom-navbar .nav-link {
@@ -114,122 +69,109 @@ body {
 
 .custom-navbar .nav-link:hover,
 .custom-navbar .nav-link.active {
-    /* ใช้สี Primary สำหรับเส้นใต้เมื่อ Hover/Active */
     border-bottom: 3px solid var(--brand-primary);
     color: var(--brand-primary) !important;
 }
 
 /* ==================================== */
-/* 3. SECTION & ELEMENT STYLING */
+/* 3. HERO SECTION STYLING (INDEX.HTML) */
 /* ==================================== */
 
-/* Hero Section (พื้นหลังมืด) */
 .hero-section {
-    /* ใช้สี Dark และ Info */
     color: var(--color-white);
-    padding: 8rem 0;
-    min-height: calc(80vh - 60px);
+    padding: 0; 
+    min-height: calc(100vh - 60px); /* FIX: ทำให้ Hero Section สูงเท่าหน้าจอพอดี (หักลบส่วน Navbar) */
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
     display: flex;
     align-items: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวตั้ง */
     justify-content: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวนอน */
+}
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* ใช้สีดำเข้ม (var(--color-dark)) ที่โปร่งใส 50% */
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 2;
-        /* ให้อยู่เหนือรูปภาพ (z-index: 1) แต่ใต้เนื้อหา (z-index: 10) */
-    }
+/* วิดีโอพื้นหลังสำหรับ Hero Section */
+.hero-section .hero-video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-section .hero-video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%); 
+    object-fit: cover; /* FIX: ใช้ object-fit: cover เพื่อให้วิดีโอเต็มพื้นที่เสมอ */
+}
+
+/* Overlay สีดำโปร่งแสง สำหรับ Hero Section */
+.hero-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+
+/* สไตล์สำหรับเนื้อหา Hero (ให้อยู่เหนือวิดีโอ) */
+.hero-section .container {
+    position: relative;
+    z-index: 10;
+    padding-top: 4rem; /* NEW: เพิ่ม Padding ให้เนื้อหา Hero เพื่อไม่ให้ชิดขอบจอ */
+    padding-bottom: 4rem;
 }
 
 .hero-section .text-info {
     color: var(--brand-info) !important;
 }
 
-/* ** NEW: สไตล์สำหรับรูปภาพพื้นหลังใน Hero Section ** */
-.hero-section .hero-background-image {
-    position: absolute;
-    /* ตรึงรูปภาพไว้ */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* ==================================== */
+/* 4. FEATURE SECTION STYLING */
+/* ==================================== */
 
-    /* ทำให้รูปภาพไม่บิดเบี้ยวและครอบคลุมพื้นที่ทั้งหมด */
-    object-fit: cover;
-    /* จัดกึ่งกลางรูปภาพ */
-    object-position: center;
-
-    /* จัดลำดับความลึก: ให้รูปภาพอยู่ข้างหลังเนื้อหา (และ Navbar) */
-    z-index: 1;
-
+#features {
+    background-color: var(--color-light) !important; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* สไตล์สำหรับเนื้อหา Hero (ให้อยู่เหนือรูปภาพพื้นหลัง) */
-.hero-section .container {
-    position: relative;
-    /* สำคัญ: เพื่อให้เนื้อหาอยู่เหนือรูปภาพพื้นหลัง */
-    z-index: 10;
-    /* เนื้อหาอยู่ข้างหน้า */
-}
-
-
-/* Feature Icons (สีดำเข้ม) */
 .feature-icon {
     font-size: 2.5rem;
     color: var(--color-dark);
 }
 
-/* Feature Card Background & Hover Effect (NEW) */
-#features {
-    background-color: var(--color-light) !important;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวตั้ง */
-    justify-content: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางในแนวนอน */
-}
-
-/* คืนค่าพื้นหลังเดิมให้เป็นสีขาว เพื่อให้สีที่เราจะกำหนดแยกโดดเด่น */
+/* คืนค่าพื้นหลังเดิมให้เป็นสีขาว และเพิ่ม Transition */
 #features .p-4.bg-white {
     background-color: var(--color-white) !important;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* ==================================== */
-/* ✅ โค้ดที่แก้ไข: ใช้สีอ่อนใหม่ 3 บล็อก */
-/* ==================================== */
-
 /* บล็อกที่ 1: สีเหลืองอ่อน */
 #features .col-lg-4:nth-child(1) .p-4.bg-white {
     background-color: var(--pastel-yellow) !important;
     color: var(--color-dark) !important;
-    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
-
 /* บล็อกที่ 2: สีชมพูอ่อน */
 #features .col-lg-4:nth-child(2) .p-4.bg-white {
     background-color: var(--pastel-pink) !important;
     color: var(--color-dark) !important;
-    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
-
 /* บล็อกที่ 3: สีส้มอ่อน */
 #features .col-lg-4:nth-child(3) .p-4.bg-white {
     background-color: var(--pastel-orange) !important;
     color: var(--color-dark) !important;
-    /* เปลี่ยนข้อความเป็นสีดำเพื่อให้อ่านง่าย */
 }
 
 /* ❗ สำคัญ: ทำให้ไอคอนเป็นสีเข้มเพื่อให้เห็นชัดบนพื้นหลังสีอ่อน */
@@ -239,29 +181,27 @@ body {
     color: var(--color-dark) !important;
 }
 
-/* ปรับสีตอน Hover: ให้สีสว่างขึ้นเล็กน้อย */
+/* ปรับสีตอน Hover */
 #features .p-4.bg-white:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 🔥 FIX: Pricing Section - เต็มหน้าจอและอยู่ตรงกลาง 🔥 */
+/* ==================================== */
+/* 5. PRICING SECTION STYLING */
+/* ==================================== */
+
 #pricing {
     min-height: 100vh;
-    /* ความสูงอย่างน้อยเต็มหน้าจอ */
     display: flex;
     align-items: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางแนวตั้ง */
     justify-content: center;
-    /* จัดเนื้อหาให้อยู่กึ่งกลางแนวนอน */
     padding: 4rem 0;
-    /* เพิ่ม Padding เผื่อไว้ */
-    background-color: var(--color-light) !important;
+    background-color: var(--color-light) !important; 
 }
 
-/* Pricing Card Styling (คงเดิม) */
+/* Pricing Card Styling */
 .pricing-card {
-    /* มี Transition อยู่แล้ว */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -271,168 +211,214 @@ body {
 }
 
 /* การ์ด Basic (Primary) */
-.pricing-card.border-primary {
-    border-color: var(--brand-primary) !important;
-}
-
-.pricing-card .bg-primary {
-    background-color: var(--brand-primary) !important;
-}
-
-.pricing-card .btn-outline-primary {
-    color: var(--brand-primary) !important;
-    border-color: var(--brand-primary) !important;
-}
-
-.pricing-card .btn-outline-primary:hover {
-    background-color: var(--brand-primary) !important;
-    color: var(--color-white) !important;
-}
+.pricing-card.border-primary { border-color: var(--brand-primary) !important; }
+.pricing-card .bg-primary { background-color: var(--brand-primary) !important; }
+.pricing-card .btn-outline-primary { color: var(--brand-primary) !important; border-color: var(--brand-primary) !important; }
+.pricing-card .btn-outline-primary:hover { background-color: var(--brand-primary) !important; color: var(--color-white) !important; }
 
 /* การ์ด Standard (Success) */
-.pricing-card.border-success {
-    border-color: var(--brand-success) !important;
-}
+.pricing-card.border-success { border-color: var(--brand-success) !important; }
+.pricing-card .bg-success { background-color: var(--brand-success) !important; }
+.pricing-card .btn-success { background-color: var(--brand-success) !important; border-color: var(--brand-success) !important; }
 
-.pricing-card .bg-success {
-    background-color: var(--brand-success) !important;
-}
-
-.pricing-card .btn-success {
-    background-color: var(--brand-success) !important;
-    border-color: var(--brand-success) !important;
-}
-
-/* การ์ด Enterprise (Info/Primary) - ใช้ Primary Theme เหมือน Basic เพื่อให้ดูเป็นชุดเดียวกัน */
-.pricing-card.border-info {
-    border-color: var(--brand-premium) !important;
-}
-
-.pricing-card .bg-info {
-    background-color: var(--brand-premium) !important;
-    color: var(--color-white) !important;
-}
-
-.pricing-card .btn-outline-info {
-    color: var(--brand-premium) !important;
-    border-color: var(--brand-premium) !important;
-}
-
-.pricing-card .btn-outline-info:hover {
-    background-color: var(--brand-premium) !important;
-    color: var(--color-white) !important;
-}
+/* การ์ด Enterprise (Info/Premium) */
+.pricing-card.border-info { border-color: var(--brand-premium) !important; }
+.pricing-card .bg-info { background-color: var(--brand-premium) !important; color: var(--color-white) !important; }
+.pricing-card .btn-outline-info { color: var(--brand-premium) !important; border-color: var(--brand-premium) !important; }
+.pricing-card .btn-outline-info:hover { background-color: var(--brand-premium) !important; color: var(--color-white) !important; }
 
 /* Check Icons */
-.list-unstyled .text-success {
-    color: var(--brand-success) !important;
+.list-unstyled .text-success { color: var(--brand-success) !important; }
+
+/* ==================================== */
+/* 6. TEAM MEMBER STYLING (ABOUT.HTML) */
+/* ==================================== */
+
+/* ==================================== */
+/* 6. TEAM MEMBER STYLING (ABOUT.HTML) */
+/* ==================================== */
+
+/* Wrapper สำหรับเนื้อหาหน้า About ทั้งหมด (ไม่รวม navbar/footer) */
+.about-page-main {
+    min-height: calc(100vh - 60px); 
+    padding-bottom: 0; 
 }
 
-/* 4. TEAM MEMBER STYLING */
+/* องค์ประกอบหลักที่ครอบวิดีโอและเนื้อหา */
+.team-section-container {
+    position: relative; 
+    overflow: hidden;
+    min-height: calc(100vh - 60px); 
+    width: 100%;
+    padding-top: 60px; 
+    padding-bottom: 4rem; 
+}
+
+/* วิดีโอพื้นหลังสำหรับหน้า About Us */
+.team-section-container .team-video-background {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: 1; 
+    overflow: hidden;
+}
+
+.team-section-container .team-video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%); 
+    object-fit: cover;
+}
+
+/* Overlay สีดำโปร่งแสง สำหรับหน้า About Us */
+.team-section-container .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 2; 
+}
+
+/* เนื้อหาทีมทั้งหมดต้องอยู่บนวิดีโอและ overlay */
+/* Wrapper สำหรับเนื้อหาภายใน (ใช้ Bootstrap .container) */
+.team-section-container .team-content-wrapper {
+    position: relative; 
+    z-index: 10; 
+    color: var(--color-white); 
+    text-align: center; 
+}
+
+/* ปรับสีข้อความ Heading & Bio เป็นสีขาว (เพื่อให้เห็นชัดเจนบนพื้นหลังวิดีโอ) */
+.team-section-container h1,
+.team-section-container h2 {
+    color: var(--color-white) !important;
+}
+
+.team-section-container .bio {
+    background-color: rgba(255, 255, 255, 0.1) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: var(--color-white) !important;
+    max-width: 700px; /* NEW: กำหนดความกว้างสูงสุดของ bio */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* การ์ดสมาชิก: ปรับสีพื้นหลังให้โปร่งใสและมีสีพาสเทล */
 .team-member-card {
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: var(--color-dark) !important; /* ✅ FIX: ปรับสีข้อความใน card เป็นสีเข้มเพื่อให้เห็นชัด */
 }
 
 .team-member-card:hover {
     transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* ** แก้ไข: รูปภาพสมาชิกให้เป็นวงกลมสมบูรณ์และไม่บิดเบี้ยว ** */
+/* สีพื้นหลังเฉพาะของการ์ดแต่ละใบ */
+/* บล็อกที่ 1: สีฟ้าพาสเทล */
+.row.g-4 .col-lg-4:nth-child(1) .team-member-card {
+    background-color: rgba(210, 227, 252, 0.8) !important; /* var(--team-pastel-blue) + alpha */
+    border-color: rgba(180, 210, 255, 0.8) !important; /* ขอบสีฟ้าเข้มขึ้น */
+}
+/* บล็อกที่ 2: สีเขียวพาสเทล */
+.row.g-4 .col-lg-4:nth-child(2) .team-member-card {
+    background-color: rgba(213, 232, 223, 0.8) !important; /* var(--team-pastel-green) + alpha */
+    border-color: rgba(180, 215, 200, 0.8) !important; /* ขอบสีเขียวเข้มขึ้น */
+}
+/* บล็อกที่ 3: สีลาเวนเดอร์พาสเทล */
+.row.g-4 .col-lg-4:nth-child(3) .team-member-card {
+    background-color: rgba(237, 216, 254, 0.8) !important; /* var(--team-pastel-lavender) + alpha */
+    border-color: rgba(210, 180, 240, 0.8) !important; /* ขอบสีลาเวนเดอร์เข้มขึ้น */
+}
+/* บล็อกที่ 4: สีพีชพาสเทล (เพิ่มถ้ามี 4 คน) */
+.row.g-4 .col-lg-4:nth-child(4) .team-member-card {
+    background-color: rgba(255, 181, 166, 0.8) !important; /* var(--team-pastel-peach) + alpha */
+    border-color: rgba(240, 150, 140, 0.8) !important; /* ขอบสีพีชเข้มขึ้น */
+}
+
+
+/* แก้ไข: รูปภาพสมาชิกให้เป็นวงกลมสมบูรณ์และไม่บิดเบี้ยว */
 .team-member-card .team-member-img {
-    /* 1. กำหนดขนาดตายตัวให้เป็นสี่เหลี่ยมจัตุรัส */
-    width: 300px;
+    width: 300px; /* ลดขนาดรูปภาพลงเล็กน้อย */
     height: 300px;
-    /* 2. ทำให้ภาพไม่บิดเบี้ยว (ตัดส่วนที่เกินออกไป) */
     object-fit: cover;
-    /* 3. ทำให้ภาพอยู่ตรงกลางของการ์ด */
     display: block;
     margin: 0 auto 1rem auto;
-    /* เว้นระยะห่างด้านล่างจากชื่อ 1rem */
-
-    /* 4. กุญแจสำคัญ: ทำให้เป็นวงกลม */
     border-radius: 50%;
-    /* ตัวเลือกเสริม: เพิ่มเงาหรือขอบ */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* ปรับสีข้อความในการ์ดสมาชิกเป็นสีเข้ม (เพื่อให้เห็นชัดบนพื้นหลังสีอ่อน) */
+.team-member-card .card-title,
+.team-member-card .card-text {
+    color: var(--color-dark) !important; /* ✅ FIX: เปลี่ยนเป็นสีเข้ม */
+}
+
+/* ปุ่ม GitHub ในการ์ดสมาชิก */
+.team-member-card .btn-outline-dark {
+    color: var(--color-dark) !important; /* ✅ FIX: เปลี่ยนเป็นสีเข้ม */
+    border-color: var(--color-dark) !important; /* ✅ FIX: เปลี่ยนเป็นสีเข้ม */
+}
+
+.team-member-card .btn-outline-dark:hover {
+    background-color: var(--color-dark) !important; /* ✅ FIX: พื้นหลังเข้มเมื่อ hover */
+    color: var(--color-white) !important; /* ✅ FIX: ตัวอักษรขาวเมื่อ hover */
+}
 /* ==================================== */
-/* ✅ NEW: กำหนดสีพื้นหลังให้แต่ละบล็อกสมาชิก (5 บล็อก) */
-/* (ใช้ col-lg-4:nth-child(n) เพื่อกำหนดสีที่แตกต่างกัน) */
+/* 7. FOOTER & CTA STYLING */
 /* ==================================== */
 
-.row.g-4 .col-lg-4:nth-child(1) .team-member-card {
-    background-color: var(--team-pastel-blue) !important;
-    border-color: var(--team-pastel-blue) !important;
+.social-media-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
 }
 
-.row.g-4 .col-lg-4:nth-child(2) .team-member-card {
-    background-color: var(--pastel-pink) !important;
-    border-color: var(--pastel-pink) !important;
-}
-
-.row.g-4 .col-lg-4:nth-child(3) .team-member-card {
-    background-color: var(--team-pastel-green) !important;
-    border-color: var(--team-pastel-green) !important;
-}
-
-.row.g-4 .col-lg-4:nth-child(4) .team-member-card {
-    background-color: var(--pastel-yellow) !important;
-    border-color: var(--pastel-yellow) !important;
-}
-
-.row.g-4 .col-lg-4:nth-child(5) .team-member-card {
-    background-color: var(--team-pastel-lavender) !important;
-    border-color: var(--team-pastel-lavender) !important;
-}
-
-/* 5. FOOTER & CTA */
 .btn-primary {
     background-color: var(--brand-primary) !important;
     border-color: var(--brand-primary) !important;
-    /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
 
-/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-primary (ปุ่มติดต่อเรา) */
 .btn-primary:hover {
     background-color: var(--brand-primary) !important;
     border-color: var(--brand-primary) !important;
     color: var(--color-dark) !important;
-    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-info {
-    /* สำหรับปุ่ม CTA หลักใน Hero Section */
     background-color: var(--brand-info) !important;
     border-color: var(--brand-info) !important;
-    /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
 
-/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-info (ปุ่มทดลองใช้ฟรี) */
 .btn-info:hover {
     background-color: var(--brand-info) !important;
     border-color: var(--brand-info) !important;
     color: var(--color-white) !important;
-    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-success {
-    /* สำหรับปุ่ม ปุ่มซื้อทั่วไป */
     background-color: var(--brand-info) !important;
     border-color: var(--brand-info) !important;
-    /* ✅ เพิ่ม: Transition */
     transition: all 0.3s ease;
 }
 
-/* ✅ NEW: Hover effect สำหรับปุ่ม .btn-info (ปุ่มซื้อทั่วไป) */
 .btn-success:hover {
     background-color: var(--color-gold) !important;
     border-color: var(--color-gold) !important;
     color: var(--color-dark) !important;
-    /* เปลี่ยนเป็นสีเข้ม */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -451,18 +437,38 @@ body {
 }
 
 /* ==================================== */
-/* 6. BACK TO TOP BUTTON */
+/* 8. MISCELLANEOUS STYLING */
+/* ==================================== */
+
+hr {
+    height: 4px;
+    background: linear-gradient(to right, var(--brand-primary), var(--brand-success));
+    margin: 40px auto;
+    max-width: 85%;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.bio {
+    font-style: italic;
+    color: #555;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 50%;
+    background-color: var(--color-light);
+}
+
+
+/* ==================================== */
+/* 9. BACK TO TOP BUTTON */
 /* ==================================== */
 #backToTopBtn {
-    /* ซ่อนปุ่มเริ่มต้น (ไม่มี JS จึงใช้แค่ CSS ไม่ได้) แต่เราจะให้มันแสดงอยู่เสมอ */
     position: fixed;
-    /* ตำแหน่งคงที่ */
     bottom: 20px;
-    /* ห่างจากขอบล่าง 20px */
     right: 20px;
-    /* ห่างจากขอบขวา 20px */
     z-index: 99;
-    /* ให้อยู่ด้านหน้าสุด */
     border: none;
     outline: none;
     cursor: pointer;
