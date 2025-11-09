@@ -324,25 +324,35 @@ body {
 }
 
 /* สีพื้นหลังเฉพาะของการ์ดแต่ละใบ */
+
 /* บล็อกที่ 1: สีฟ้าพาสเทล */
 .row.g-4 .col-lg-4:nth-child(1) .team-member-card {
     background-color: rgba(210, 227, 252, 0.8) !important; /* var(--team-pastel-blue) + alpha */
-    border-color: rgba(180, 210, 255, 0.8) !important; /* ขอบสีฟ้าเข้มขึ้น */
+    border-color: rgba(180, 210, 255, 0.9) !important; /* ขอบสีฟ้าเข้มขึ้น */
 }
+
 /* บล็อกที่ 2: สีเขียวพาสเทล */
 .row.g-4 .col-lg-4:nth-child(2) .team-member-card {
     background-color: rgba(213, 232, 223, 0.8) !important; /* var(--team-pastel-green) + alpha */
-    border-color: rgba(180, 215, 200, 0.8) !important; /* ขอบสีเขียวเข้มขึ้น */
+    border-color: rgba(180, 215, 200, 0.9) !important; /* ขอบสีเขียวเข้มขึ้น */
 }
 /* บล็อกที่ 3: สีลาเวนเดอร์พาสเทล */
 .row.g-4 .col-lg-4:nth-child(3) .team-member-card {
     background-color: rgba(237, 216, 254, 0.8) !important; /* var(--team-pastel-lavender) + alpha */
-    border-color: rgba(210, 180, 240, 0.8) !important; /* ขอบสีลาเวนเดอร์เข้มขึ้น */
+    border-color: rgba(210, 180, 240, 0.9) !important; /* ขอบสีลาเวนเดอร์เข้มขึ้น */
 }
-/* บล็อกที่ 4: สีพีชพาสเทล (เพิ่มถ้ามี 4 คน) */
+
+/* บล็อกที่ 5: สีเหลืองพาสเทล (ใช้ pastel-yellow) */
 .row.g-4 .col-lg-4:nth-child(4) .team-member-card {
+    /* ใช้สีเหลือง pastel-yellow จาก :root และเพิ่มความโปร่งใส 0.7 */
+    background-color: rgba(255, 249, 227, 0.8) !important; 
+    border-color: rgba(230, 220, 180, 0.9) !important; /* ขอบสีเหลืองเข้มขึ้นเล็กน้อย */
+}
+
+/* บล็อกที่ 5: สีพีชพาสเทล (เพิ่มถ้ามี 4 คน) */
+.row.g-4 .col-lg-4:nth-child(5) .team-member-card {
     background-color: rgba(255, 181, 166, 0.8) !important; /* var(--team-pastel-peach) + alpha */
-    border-color: rgba(240, 150, 140, 0.8) !important; /* ขอบสีพีชเข้มขึ้น */
+    border-color: rgba(240, 150, 140, 0.9) !important; /* ขอบสีพีชเข้มขึ้น */
 }
 
 
